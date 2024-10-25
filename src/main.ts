@@ -6,3 +6,11 @@ class AppController {
     return " hi";
   }
 }
+
+
+@Module({
+    controllers : [AppController]
+})
+class AppModule{
+    
+}

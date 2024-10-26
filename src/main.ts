@@ -1,16 +1,25 @@
 import { Controller, Module, Get } from "@nestjs/common";
-@Controller()
+import { NestFactory } from "@nestjs/core";
+@Controller("greet")
 class AppController {
   @Get()
   getRootRoute() {
-    return " hi";
+    return " idey greet";
+  }
+  @Get("admin")
+  getAdminRoute() {
+    return "hi whats up nest js, this is the admin";
   }
 }
 
-
 @Module({
-    controllers : [AppController]
+  controllers: [AppController],
 })
-class AppModule{
-    
-}
+class AppModule {}
+
+const bootstrap = async () => {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+};
+
+bootstrap();
